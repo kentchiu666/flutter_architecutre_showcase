@@ -1,0 +1,38 @@
+name: mvvm_mobx_news_reader
+description: MVVM News Reader with MobX State Management
+version: 1.0.0
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # State Management
+  mobx: ^2.2.1
+  flutter_mobx: ^2.1.1
+  
+  # Dependency Injection
+  get_it: ^7.6.7
+  
+  # Network
+  http: ^1.2.0
+  
+  # Icons
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  
+  # MobX Code Generation
+  mobx_codegen: ^2.1.1
+  build_runner: ^2.4.6
+  
+  # Testing
+  mocktail: ^1.0.0
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true

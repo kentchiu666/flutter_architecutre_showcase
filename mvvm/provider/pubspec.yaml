@@ -1,0 +1,33 @@
+name: mvvm_provider_news_reader
+description: MVVM News Reader with Provider State Management
+version: 1.0.0
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # State Management
+  provider: ^6.1.1
+  
+  # Dependency Injection
+  get_it: ^7.6.7
+  
+  # Network
+  http: ^1.2.0
+  
+  # Icons
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  
+  # Testing
+  mocktail: ^1.0.0
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true

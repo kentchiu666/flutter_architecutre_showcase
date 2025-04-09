@@ -1,0 +1,30 @@
+name: mvvm_riverpod_news_reader
+description: MVVM News Reader with Riverpod State Management
+version: 1.0.0
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # State Management
+  flutter_riverpod: ^2.4.9
+  
+  # Network
+  http: ^1.2.0
+  
+  # Icons
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  
+  # Testing
+  mocktail: ^1.0.0
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
