@@ -103,8 +103,8 @@ mvvm/provider/
 5.  運行應用程式：`flutter run` (或使用 VS Code 的 "MVVM Provider" 運行配置)
 
 ## 測試
-（目前專案包含基礎的 ViewModel 單元測試和被註解掉的 Widget 測試。可以使用 `mocktail` 和 `ChangeNotifierProvider` 來編寫更詳細的測試）
-- 執行測試：`flutter test`
+（注意：目前專案僅包含 Flutter 自動生成的基礎 Widget 測試 (`test/widget_test.dart`)。若要進行更完整的測試，可以使用 `mockito` 或 `mocktail` 等工具模擬 Service 來進行 ViewModel 的單元測試，並擴充 Widget 測試。）
+- 執行現有測試：`flutter test`
 
 ## 學習目標
 透過此範例，您可以學習：

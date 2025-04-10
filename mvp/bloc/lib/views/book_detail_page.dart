@@ -9,8 +9,7 @@ class BookDetailPage extends StatelessWidget {
   const BookDetailPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(
         title: const Text('Book Details'),
         actions: [
@@ -73,5 +72,4 @@ class BookDetailPage extends StatelessWidget {
         },
       ),
     );
-  }
 }

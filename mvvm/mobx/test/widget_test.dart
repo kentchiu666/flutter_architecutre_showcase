@@ -8,8 +8,8 @@ import 'package:mvvm_mobx_news_reader/view/news_reader_app.dart';
 void main() {
   testWidgets('News Reader App Test', (WidgetTester tester) async {
     // 初始化依賴 | Initialize dependencies
-    final newsService = NewsService();
-    final newsStore = NewsStore(newsService);
+    final NewsService newsService = NewsService();
+    final NewsStore newsStore = NewsStore(newsService);
 
     // 構建應用並觸發渲染 | Build app and trigger rendering
     await tester.pumpWidget(
@@ -28,7 +28,7 @@ void main() {
     expect(find.byIcon(Icons.add), findsOneWidget);
 
     // 測試添加新聞功能 | Test adding a news item
-    final newNews = News(
+    final News newNews = News(
       id: '3',
       title: '測試新增新聞',
       content: '這是一個測試新增的新聞項目',

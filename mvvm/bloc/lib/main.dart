@@ -7,7 +7,7 @@ import 'viewmodel/news_bloc.dart';
 import 'viewmodel/news_event.dart'; // Import events
 
 void main() {
-  final getIt = GetIt.instance;
+  final GetIt getIt = GetIt.instance;
   getIt.registerSingleton<NewsService>(NewsService());
 
   runApp(

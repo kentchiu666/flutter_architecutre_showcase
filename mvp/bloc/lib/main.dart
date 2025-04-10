@@ -5,12 +5,12 @@ import 'views/book_app.dart';
 
 void main() {
   // Create an instance of the BookService
-  final BookService bookService = BookService();
+  final bookService = BookService();
 
   runApp(
     // Provide the BookService instance to the entire widget tree
     RepositoryProvider<BookService>(
-      create: (context) => bookService,
+      create: (BuildContext context) => bookService,
       child: const BookApp(), // Run the main application widget
     ),
   );

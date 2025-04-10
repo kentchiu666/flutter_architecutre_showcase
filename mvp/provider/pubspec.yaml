@@ -1,0 +1,23 @@
+name: mvp_provider
+description: "A Flutter project demonstrating MVP with Provider."
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  provider: ^6.0.5    # For state management and dependency injection
+  uuid: ^4.0.0       # For generating unique IDs
+  # Equatable is not strictly needed here as ChangeNotifier handles state comparison differently
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true

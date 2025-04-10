@@ -1,0 +1,26 @@
+name: mvp_mobx
+description: "A Flutter project demonstrating MVP with MobX."
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  mobx: ^2.2.0          # Core MobX library
+  flutter_mobx: ^2.1.0  # Flutter integration for MobX (Observer widget)
+  provider: ^6.0.5      # For providing the MobX store
+  uuid: ^4.0.0         # For generating unique IDs
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+  build_runner: ^2.4.6   # Needed for code generation
+  mobx_codegen: ^2.3.0 # Generates MobX code
+
+flutter:
+  uses-material-design: true

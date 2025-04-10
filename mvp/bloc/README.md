@@ -5,9 +5,9 @@
 
 ## 架構特點
 - **MVP (Model-View-Presenter)**
-  - **Model**: 負責應用程式的資料和業務邏輯的核心部分。
-  - **View**: 負責顯示資料（由 Presenter 提供）並將使用者操作傳遞給 Presenter。View 通常是被動的，不包含業務邏輯。
-  - **Presenter**: 作為 Model 和 View 之間的中介。它從 Model 獲取資料，處理資料使其適合顯示在 View 上，並響應 View 的使用者輸入事件來更新 Model。在此範例中，BLoC 承擔了 Presenter 的大部分職責。
+  - **Model**: 負責應用程式的資料和業務邏輯的核心部分 (`lib/models/`)。
+  - **View**: 負責顯示資料（由 Presenter 提供）並將使用者操作傳遞給 Presenter (`lib/views/`)。View 通常是被動的，不包含業務邏輯。
+  - **Presenter**: 作為 Model 和 View 之間的中介 (`lib/presenters/`)。它從 Model 獲取資料（透過 Service），處理資料使其適合顯示在 View 上，並響應 View 的使用者輸入事件來更新 Model（透過 Service）。在此範例中，BLoC 承擔了 Presenter 的大部分職責。
   - 提升程式碼的可讀性、可測試性與關注點分離。
 
 - **BLoC (Business Logic Component)**
@@ -121,7 +121,7 @@ mvp/bloc/
 5.  運行應用程式：`flutter run` (或使用 VS Code 的 "MVP BLoC" 運行配置)
 
 ## 測試
-（目前專案未包含測試，可以使用 `bloc_test` 套件編寫 BLoC 單元測試，以及使用 `flutter_test` 編寫 Widget 測試）
+（注意：目前專案未包含針對性的單元或 Widget 測試。若要進行測試，可以使用 `bloc_test` 套件編寫 BLoC 單元測試，並使用 `flutter_test` 編寫 Widget 測試。）
 - 執行測試（如果添加了）：`flutter test`
 
 ## 學習目標

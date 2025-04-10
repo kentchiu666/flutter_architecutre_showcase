@@ -61,7 +61,7 @@ class _AddNewsPageState extends ConsumerState<AddNewsPage> { // Add State class
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
-                final News newNews = News(
+                final newNews = News(
                   id: DateTime.now().millisecondsSinceEpoch.toString(),
                   title: _titleController.text, // Use state's controller
                   content: _contentController.text, // Use state's controller

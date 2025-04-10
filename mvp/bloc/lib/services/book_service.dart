@@ -4,7 +4,7 @@ import 'package:uuid/uuid.dart';
 
 class BookService {
   // Simulate a database or network source with a list
-  final List<Book> _books = [
+  final List<Book> _books = <Book>[
     Book(id: const Uuid().v4(), title: 'The Hitchhiker\'s Guide to the Galaxy', author: 'Douglas Adams'),
     Book(id: const Uuid().v4(), title: '1984', author: 'George Orwell'),
     Book(id: const Uuid().v4(), title: 'To Kill a Mockingbird', author: 'Harper Lee'),
@@ -20,14 +20,14 @@ class BookService {
 
   Future<Book> addBook(String title, String author) async {
     await _delay();
-    final newBook = Book(title: title, author: author);
+    final Book newBook = Book(title: title, author: author);
     _books.add(newBook);
     return newBook;
   }
 
   Future<Book?> updateBook(Book updatedBook) async {
     await _delay();
-    final index = _books.indexWhere((book) => book.id == updatedBook.id);
+    final int index = _books.indexWhere((Book book) => book.id == updatedBook.id);
     if (index != -1) {
       _books[index] = updatedBook;
       return updatedBook;
@@ -37,13 +37,13 @@ class BookService {
 
   Future<void> deleteBook(String id) async {
     await _delay();
-    _books.removeWhere((book) => book.id == id);
+    _books.removeWhere((Book book) => book.id == id);
   }
 
   Future<Book?> getBookById(String id) async {
      await _delay();
      try {
-       return _books.firstWhere((book) => book.id == id);
+       return _books.firstWhere((Book book) => book.id == id);
      } catch (e) {
        return null; // Not found
      }

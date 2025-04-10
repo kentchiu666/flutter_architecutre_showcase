@@ -11,8 +11,7 @@ class BookListPage extends StatelessWidget {
   const BookListPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(
         title: const Text('Books (MVP - BLoC)'),
         actions: [
@@ -134,5 +133,4 @@ class BookListPage extends StatelessWidget {
         },
       ),
     );
-  }
 }

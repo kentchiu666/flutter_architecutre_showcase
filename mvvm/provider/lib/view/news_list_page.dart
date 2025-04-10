@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:get_it/get_it.dart'; // Assuming GetIt is used for service
+import '../model/news.dart';
 import '../services/news_service.dart'; // Needed for GetIt
 import '../viewmodel/news_view_model.dart';
 import 'add_news_page.dart';
@@ -35,7 +36,7 @@ class NewsListPage extends StatelessWidget {
               return ListView.builder(
                 itemCount: viewModel.newsList.length,
                 itemBuilder: (BuildContext context, int index) {
-                  final news = viewModel.newsList[index];
+                  final News news = viewModel.newsList[index];
                   return ListTile(
                     title: Text(news.title),
                     subtitle: Text(news.author),

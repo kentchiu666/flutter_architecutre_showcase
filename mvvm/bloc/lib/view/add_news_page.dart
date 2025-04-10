@@ -42,7 +42,7 @@ class _AddNewsPageState extends State<AddNewsPage> {
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
-                final newNews = News(
+                final News newNews = News(
                   id: DateTime.now().millisecondsSinceEpoch.toString(),
                   title: _titleController.text,
                   content: _contentController.text,

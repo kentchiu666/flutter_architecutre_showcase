@@ -6,7 +6,7 @@ class NewsState { // Optional error message
 
   const NewsState({
     this.isLoading = false,
-    this.newsList = const [],
+    this.newsList = const <News>[],
     this.errorMessage,
   });
   final bool isLoading;

@@ -1,0 +1,26 @@
+name: mvp_riverpod
+description: "A Flutter project demonstrating MVP with Riverpod."
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_riverpod: ^2.4.9 # Riverpod for state management
+  uuid: ^4.0.0           # For generating unique IDs
+  freezed_annotation: ^2.4.1 # Optional: For immutable state classes (recommended with Riverpod)
+  equatable: ^2.0.5       # Optional: Can be used with Freezed or standalone for state equality
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+  build_runner: ^2.4.6     # Needed if using Freezed
+  freezed: ^2.4.5          # Code generator for immutable classes
+
+flutter:
+  uses-material-design: true

@@ -10,6 +10,6 @@ final Provider<NewsService> newsServiceProvider = Provider<NewsService>((Provide
 // We use StateNotifierProvider because NewsNotifier will manage mutable state
 final StateNotifierProvider<NewsNotifier, NewsState> newsNotifierProvider = StateNotifierProvider<NewsNotifier, NewsState>((StateNotifierProviderRef<NewsNotifier, NewsState> ref) {
   // The notifier depends on the NewsService, which we get from newsServiceProvider
-  final NewsService newsService = ref.watch(newsServiceProvider);
+  final newsService = ref.watch(newsServiceProvider);
   return NewsNotifier(newsService);
 });

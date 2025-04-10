@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../model/news.dart';
 import '../viewmodel/news_bloc.dart';
 import '../viewmodel/news_event.dart'; // Import events
 import '../viewmodel/news_state.dart'; // Import states
@@ -36,7 +35,7 @@ class _NewsListPageState extends State<NewsListPage> { // Add State class
             return ListView.builder(
               itemCount: state.newsList.length, // Use correct property name
               itemBuilder: (BuildContext context, int index) {
-                final News news = state.newsList[index]; // Use correct property name
+                final news = state.newsList[index]; // Use correct property name
                 return ListTile(
                   title: Text(news.title),
                   subtitle: Text(news.author),

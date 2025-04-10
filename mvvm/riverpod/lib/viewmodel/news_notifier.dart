@@ -14,7 +14,7 @@ class NewsNotifier extends StateNotifier<NewsState> {
     // Set loading state and clear previous error
     state = state.copyWith(isLoading: true, clearError: true);
     try {
-      final List<News> news = await _newsService.fetchNews();
+      final news = await _newsService.fetchNews();
       // Update state with loaded news and set loading to false
       state = state.copyWith(isLoading: false, newsList: news);
     } catch (e) {
@@ -29,7 +29,7 @@ class NewsNotifier extends StateNotifier<NewsState> {
     // Here, we just update the local state.
 
     // Create a new list with the added news
-    final List<News> updatedList = List<News>.from(state.newsList)..add(news);
+    final updatedList = List<News>.from(state.newsList)..add(news);
     // Update the state with the new list
     // Keep isLoading and errorMessage as they were (or clear error if desired)
     state = state.copyWith(newsList: updatedList);

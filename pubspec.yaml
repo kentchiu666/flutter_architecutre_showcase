@@ -21,6 +21,7 @@ dependencies:
   equatable: ^2.0.5 
   flutter_riverpod: ^2.4.9
   uuid: ^4.0.0       # For generating unique IDs
+  freezed_annotation: ^2.4.1 # Optional: For immutable state classes (recommended with Riverpod)
   
   
   # Dependency Injection

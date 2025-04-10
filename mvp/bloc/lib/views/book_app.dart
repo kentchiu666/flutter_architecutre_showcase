@@ -14,7 +14,7 @@ class BookApp extends StatelessWidget {
     return BlocProvider(
       // Create the BLoC instance and provide the service
       // Also, add the initial event to load books
-      create: (context) => BookBloc(RepositoryProvider.of<BookService>(context))
+      create: (BuildContext context) => BookBloc(RepositoryProvider.of<BookService>(context))
         ..add(LoadBooks()),
       child: MaterialApp(
         title: 'MVP BLoC Books',

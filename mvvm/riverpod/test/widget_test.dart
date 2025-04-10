@@ -88,7 +88,7 @@ void main() {
 
   // Helper to create mock service
   MockNewsService _createMockNewsService() {
-    final MockNewsService mockService = MockNewsService();
+    final mockService = MockNewsService();
     // Default behavior for fetchNews
     when(mockService.fetchNews).thenAnswer((_) async => <News>[
       News(id: '1', title: 'Mock News 1', content: 'Mock Content 1', author: 'Mock Author 1'),
@@ -99,8 +99,8 @@ void main() {
 
 
   test('NewsNotifier initial state is correct', () {
-    final MockNewsService newsService = _createMockNewsService(); // Use helper
-    final NewsNotifier newsNotifier = NewsNotifier(newsService);
+    final newsService = _createMockNewsService(); // Use helper
+    final newsNotifier = NewsNotifier(newsService);
 
     // Check initial state properties
     expect(newsNotifier.state.isLoading, false);
@@ -109,11 +109,11 @@ void main() {
   });
 
   test('NewsNotifier can load news', () async {
-    final MockNewsService newsService = _createMockNewsService(); // Use helper
-    final NewsNotifier newsNotifier = NewsNotifier(newsService);
+    final newsService = _createMockNewsService(); // Use helper
+    final newsNotifier = NewsNotifier(newsService);
 
     // Act
-    final Future<void> future = newsNotifier.loadNews(); // Don't await here if checking intermediate state
+    final future = newsNotifier.loadNews(); // Don't await here if checking intermediate state
 
     // Assert loading state immediately after calling (optional)
     expect(newsNotifier.state.isLoading, true);
@@ -131,11 +131,11 @@ void main() {
   });
 
    test('NewsNotifier handles loading error', () async {
-    final MockNewsService newsService = MockNewsService(); // Create mock directly for error case
-    final Exception exception = Exception('Network Error');
+    final newsService = MockNewsService(); // Create mock directly for error case
+    final exception = Exception('Network Error');
     when(newsService.fetchNews).thenThrow(exception); // Setup error throw
 
-    final NewsNotifier newsNotifier = NewsNotifier(newsService);
+    final newsNotifier = NewsNotifier(newsService);
 
     // Act
     await newsNotifier.loadNews();
@@ -148,15 +148,15 @@ void main() {
 
 
   test('NewsNotifier can add news', () async {
-    final MockNewsService newsService = _createMockNewsService(); // Use helper
-    final NewsNotifier newsNotifier = NewsNotifier(newsService);
+    final newsService = _createMockNewsService(); // Use helper
+    final newsNotifier = NewsNotifier(newsService);
 
     // Load initial data first (optional, depends on desired test scenario)
     await newsNotifier.loadNews();
-    final int initialLength = newsNotifier.state.newsList.length;
+    final initialLength = newsNotifier.state.newsList.length;
 
     // Arrange new news
-    final News newNews = News(
+    final newNews = News(
       id: '3',
       title: '测试新闻',
       content: '测试内容',

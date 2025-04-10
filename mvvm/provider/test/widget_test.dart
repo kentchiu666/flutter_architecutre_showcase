@@ -55,7 +55,7 @@ void main() {
 
   test('NewsViewModel initial state', () {
     // Arrange
-    final NewsViewModel newsViewModel = NewsViewModel(mockNewsService); // Use mock
+    final newsViewModel = NewsViewModel(mockNewsService); // Use mock
 
     // Assert
     expect(newsViewModel.newsList, isEmpty);
@@ -65,9 +65,9 @@ void main() {
 
   test('NewsViewModel can load news successfully', () async {
     // Arrange
-    final NewsViewModel newsViewModel = NewsViewModel(mockNewsService); // Use mock
-    var notifiedLoading = false;
-    var notifiedFinished = false;
+    final newsViewModel = NewsViewModel(mockNewsService); // Use mock
+    bool notifiedLoading = false;
+    bool notifiedFinished = false;
     newsViewModel.addListener(() {
        if(newsViewModel.isLoading && !notifiedLoading) {
         notifiedLoading = true;
@@ -91,11 +91,11 @@ void main() {
 
    test('NewsViewModel handles loading error', () async {
     // Arrange
-    final Exception exception = Exception('Network Error');
+    final exception = Exception('Network Error');
     when(() => mockNewsService.fetchNews()).thenThrow(exception); // Setup error
-    final NewsViewModel newsViewModel = NewsViewModel(mockNewsService);
-     var notifiedLoading = false;
-    var notifiedFinished = false;
+    final newsViewModel = NewsViewModel(mockNewsService);
+     bool notifiedLoading = false;
+    bool notifiedFinished = false;
      newsViewModel.addListener(() {
        if(newsViewModel.isLoading && !notifiedLoading) {
         notifiedLoading = true;
@@ -119,14 +119,14 @@ void main() {
 
   test('NewsViewModel can add news', () async {
     // Arrange
-    final NewsViewModel newsViewModel = NewsViewModel(mockNewsService); // Use mock
+    final newsViewModel = NewsViewModel(mockNewsService); // Use mock
     await newsViewModel.loadNews(); // Load initial data
-    final int initialLength = newsViewModel.newsList.length;
-    var notified = false;
+    final initialLength = newsViewModel.newsList.length;
+    bool notified = false;
     newsViewModel.addListener(() { notified = true; });
 
     // Arrange new news
-    final newNews = News(
+    final News newNews = News(
       id: '3',
       title: '测试新闻',
       content: '测试内容',

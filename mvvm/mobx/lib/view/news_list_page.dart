@@ -32,7 +32,7 @@ class _NewsListPageState extends State<NewsListPage> {
           : ListView.builder(
               itemCount: widget.newsStore.newsList.length,
               itemBuilder: (BuildContext context, int index) {
-                final News news = widget.newsStore.newsList[index];
+                final news = widget.newsStore.newsList[index];
                 return ListTile(
                   title: Text(news.title),
                   subtitle: Text(news.author),

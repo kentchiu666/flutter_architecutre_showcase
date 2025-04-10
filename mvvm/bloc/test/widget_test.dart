@@ -11,7 +11,7 @@ import 'package:mvvm_bloc_news_reader/view/news_reader_app.dart';
 void main() {
   testWidgets('News Reader App Test', (WidgetTester tester) async {
     // 初始化依賴注入 | Initialize dependency injection
-    final getIt = GetIt.instance;
+    final GetIt getIt = GetIt.instance;
     getIt.registerSingleton<NewsService>(NewsService());
 
     // 構建應用並觸發渲染 | Build app and trigger rendering

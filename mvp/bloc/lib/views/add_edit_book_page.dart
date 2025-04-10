@@ -6,17 +6,17 @@ import '../presenters/book_event.dart';
 import '../presenters/book_state.dart'; // Needed for state check
 
 class AddEditBookPage extends StatefulWidget {
-  // Optional book parameter for editing
-  final Book? book;
 
   const AddEditBookPage({super.key, this.book});
+  // Optional book parameter for editing
+  final Book? book;
 
   @override
   State<AddEditBookPage> createState() => _AddEditBookPageState();
 }
 
 class _AddEditBookPageState extends State<AddEditBookPage> {
-  final _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   late TextEditingController _titleController;
   late TextEditingController _authorController;
   bool _isEditing = false;
@@ -38,12 +38,12 @@ class _AddEditBookPageState extends State<AddEditBookPage> {
 
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
-      final title = _titleController.text;
-      final author = _authorController.text;
+      final String title = _titleController.text;
+      final String author = _authorController.text;
 
       if (_isEditing) {
         // Create updated book object, keeping the original ID
-        final updatedBook = widget.book!.copyWith(title: title, author: author);
+        final Book updatedBook = widget.book!.copyWith(title: title, author: author);
         // Dispatch update event
         context.read<BookBloc>().add(UpdateBook(updatedBook));
       } else {
@@ -57,8 +57,7 @@ class _AddEditBookPageState extends State<AddEditBookPage> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(
         title: Text(_isEditing ? 'Edit Book' : 'Add Book'),
       ),
@@ -99,5 +98,4 @@ class _AddEditBookPageState extends State<AddEditBookPage> {
         ),
       ),
     );
-  }
 }

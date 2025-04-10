@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../model/news.dart';
 import '../providers.dart'; // Import providers
 import '../viewmodel/news_state.dart'; // Explicitly import NewsState
 import 'add_news_page.dart';
@@ -27,7 +28,7 @@ class _NewsListPageState extends ConsumerState<NewsListPage> { // Changed to Con
   @override
   Widget build(BuildContext context) {
     // Watch the newsNotifierProvider to get the current state and rebuild on change
-    final NewsState newsState = ref.watch(newsNotifierProvider);
+    final newsState = ref.watch(newsNotifierProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -61,7 +62,7 @@ class _NewsListPageState extends ConsumerState<NewsListPage> { // Changed to Con
       return ListView.builder(
         itemCount: state.newsList.length,
         itemBuilder: (BuildContext context, int index) {
-          final news = state.newsList[index];
+          final News news = state.newsList[index];
           return ListTile(
             title: Text(news.title),
             subtitle: Text(news.author),

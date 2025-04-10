@@ -5,7 +5,6 @@ import 'book_event.dart';
 import 'book_state.dart';
 
 class BookBloc extends Bloc<BookEvent, BookState> {
-  final BookService _bookService;
 
   BookBloc(this._bookService) : super(BookInitial()) {
     on<LoadBooks>(_onLoadBooks);
@@ -14,14 +13,15 @@ class BookBloc extends Bloc<BookEvent, BookState> {
     on<DeleteBook>(_onDeleteBook);
     on<SelectBook>(_onSelectBook);
   }
+  final BookService _bookService;
 
   Future<void> _onLoadBooks(LoadBooks event, Emitter<BookState> emit) async {
     emit(BookLoading());
     try {
-      final books = await _bookService.getBooks();
+      final List<Book> books = await _bookService.getBooks();
       emit(BookLoaded(books));
     } catch (e) {
-      emit(BookError("Failed to load books: ${e.toString()}"));
+      emit(BookError('Failed to load books: ${e.toString()}'));
     }
   }
 
@@ -31,11 +31,11 @@ class BookBloc extends Bloc<BookEvent, BookState> {
     try {
       await _bookService.addBook(event.title, event.author);
       // Reload books after adding
-      final books = await _bookService.getBooks();
-      emit(BookOperationSuccess(books, message: "Book added successfully"));
+      final List<Book> books = await _bookService.getBooks();
+      emit(BookOperationSuccess(books, message: 'Book added successfully'));
       // emit(BookLoaded(books)); // Or just emit loaded state
     } catch (e) {
-      emit(BookError("Failed to add book: ${e.toString()}"));
+      emit(BookError('Failed to add book: ${e.toString()}'));
       // Optionally reload books even on error to show the current state
       // add(LoadBooks());
     }
@@ -44,17 +44,17 @@ class BookBloc extends Bloc<BookEvent, BookState> {
   Future<void> _onUpdateBook(UpdateBook event, Emitter<BookState> emit) async {
     // emit(BookLoading());
     try {
-      final updatedBook = await _bookService.updateBook(event.book);
+      final Book? updatedBook = await _bookService.updateBook(event.book);
       if (updatedBook != null) {
-        final books = await _bookService.getBooks();
-         emit(BookOperationSuccess(books, message: "Book updated successfully"));
+        final List<Book> books = await _bookService.getBooks();
+         emit(BookOperationSuccess(books, message: 'Book updated successfully'));
         // emit(BookLoaded(books));
       } else {
-         emit(BookError("Failed to update book: Not found"));
+         emit(const BookError('Failed to update book: Not found'));
          // add(LoadBooks()); // Reload to show current state
       }
     } catch (e) {
-      emit(BookError("Failed to update book: ${e.toString()}"));
+      emit(BookError('Failed to update book: ${e.toString()}'));
       // add(LoadBooks());
     }
   }
@@ -63,16 +63,16 @@ class BookBloc extends Bloc<BookEvent, BookState> {
     // emit(BookLoading());
     try {
       await _bookService.deleteBook(event.id);
-      final books = await _bookService.getBooks();
-      emit(BookOperationSuccess(books, message: "Book deleted successfully"));
+      final List<Book> books = await _bookService.getBooks();
+      emit(BookOperationSuccess(books, message: 'Book deleted successfully'));
       // emit(BookLoaded(books));
     } catch (e) {
-      emit(BookError("Failed to delete book: ${e.toString()}"));
+      emit(BookError('Failed to delete book: ${e.toString()}'));
       // add(LoadBooks());
     }
   }
 
-   void _onSelectBook(SelectBook event, Emitter<BookState> emit) {
+   Future<void> _onSelectBook(SelectBook event, Emitter<BookState> emit) async {
      // Get the current list of books from the state if possible
      List<Book> currentBooks = [];
      if (state is BookLoaded) {
@@ -81,14 +81,21 @@ class BookBloc extends Bloc<BookEvent, BookState> {
         currentBooks = (state as BookOperationSuccess).books;
      } else if (state is BookSelected) {
         currentBooks = (state as BookSelected).allBooks;
+     } else {
+       // If the list isn't readily available, load books from the service
+       try {
+         currentBooks = await _bookService.getBooks();
+       } catch (e) {
+         emit(BookError("Failed to load books: ${e.toString()}"));
+         return; // Exit if loading fails
+       }
      }
-     // We could also trigger a LoadBooks if the list isn't readily available,
-     // but for simplicity, we assume the list is usually loaded before selection.
 
      if (event.book != null) {
+       // Inside this block, event.book is guaranteed non-null
        emit(BookSelected(event.book!, currentBooks));
      } else {
-       // If deselecting, go back to the loaded state with the current books
+       // If deselecting (event.book is null), go back to the loaded state
        emit(BookLoaded(currentBooks));
      }
    }

@@ -17,7 +17,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> { // Internal cache for adding
       LoadNewsEvent event, Emitter<NewsState> emit) async {
     emit(NewsLoading());
     try {
-      final news = await _newsService.fetchNews();
+      final List<News> news = await _newsService.fetchNews();
       _currentNewsList = List.from(news); // Update internal cache
       emit(NewsLoaded(_currentNewsList));
     } catch (e) {

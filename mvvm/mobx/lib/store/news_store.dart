@@ -22,7 +22,7 @@ abstract class _NewsStore with Store {
   Future<void> loadNews() async {
     isLoading = true;
     try {
-      final news = await _newsService.fetchNews();
+      final List<News> news = await _newsService.fetchNews();
       newsList.clear();
       newsList.addAll(news);
     } catch (e) {
